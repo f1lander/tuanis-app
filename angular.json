@@ -61,7 +61,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "tuanis-app:build"
+            "browserTarget": "tuanis-app:build",
+            "proxyConfig": "proxy.config.json" 
           },
           "configurations": {
             "production": {

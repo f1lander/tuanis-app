@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from './../../services/api.service';
 
 @Component({
   selector: 'app-profile-header',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-header.component.css']
 })
 export class ProfileHeaderComponent implements OnInit {
-
-  constructor() { }
+  profile: {};
+  constructor(private apiService: ApiService) {}
 
   ngOnInit() {
-  }
+    this.apiService.profile().subscribe(profile => {
+      this.profile = profile;
 
+      console.log(this.profile);
+    });
+  }
 }
