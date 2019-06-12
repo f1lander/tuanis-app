@@ -11,10 +11,11 @@ export class ProfileHeaderComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
-    this.apiService.profile().subscribe(profile => {
+    this.apiService.profile().then(profile => {
       this.profile = profile;
 
       console.log(this.profile);
-    });
+    })
+    .catch(err => console.log(err))
   }
 }
