@@ -73,3 +73,20 @@ line-height: 14px;
     color: white;
     padding-left: 5px;
 }
+
+.article_metadata_container{
+    display: flex;
+    flex-direction: row;
+    padding-top: 4px;
+}
+
+.article_metadata{
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 16px;
+    padding-left: 10px;
+    color: #FFFFFF;
+    /* position: absolute;
+    bottom: 15px;
+    right: 30px; */
+}
