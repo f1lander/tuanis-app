@@ -16,6 +16,6 @@ export class ProfileHeaderComponent implements OnInit {
 
       console.log(this.profile);
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
   }
 }
