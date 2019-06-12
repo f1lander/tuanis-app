@@ -1,0 +1,14 @@
+.profile-header-container {
+  padding: 10px;
+}
+
+.profile-header-container img{
+  border-radius: 50%;
+}
+
+.btn-round-xs{
+  border-radius: 20px;
+  padding-left: 30%;
+  padding-right: 30%;
+  }
+  
