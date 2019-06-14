@@ -1,26 +1,25 @@
 <div fxLayout.xs="column" fxLayout="row">
   <div fxFlex="60" fxLayout="row">
     <div style="padding-left: 40px;" fxFlex="15" [fxFlex.xs]="40" class="profile-header-container">
-      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style="width:100px">
+      <img src="{{profile.avatar}}" alt="Avatar" style="width:100px">
     </div>
     <div fxFlex fxLayoutAlign="center start" fxLayout="column">
       <div>
-        Edax
+        {{profile.full_name}}
       </div>
       <div>
-        sdasda
+          {{profile.company_name}}
       </div>
       <div>
-        <i class="fa fa-map-marker"></i> Los angeles
+        <i class="fa fa-map-marker"></i> {{profile.area_served}}
       </div>
     </div>
   </div>
-  <div fxLayoutAlign="center center" fxLayout="row" fxFlex="40">
-    <div fxFlex="40">
-      <button type="button" class="btn btn-light btn-round-xs btn-xs">Message</button>
-    </div>
-    <div fxFlex="40">
-      <button type="button" class="btn btn-dark btn-round-xs btn-xs">Call now</button>
-    </div>
+  <div fxLayoutAlign="center center" fxLayout="row" fxLayout.xs="column"  fxFlex="40" [fxFlex.xs]="100">
+    
+      <button type="button" (click)="_profileButtonClicked('message')" class="btn btn-light btn-round-xs btn-xs">Message</button>
+    
+      <button type="button" (click)="_profileButtonClicked('Call Now')" class="btn btn-dark btn-round-xs btn-xs">Call now</button>
+   
   </div>
 </div>

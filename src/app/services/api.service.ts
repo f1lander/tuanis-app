@@ -1,44 +1,51 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   constructor(private httpClient: HttpClient) {}
 
-  profile(_profile: string = 'lester') {
+  profile() {
     return this.httpClient
-      .get(`${environment.apiURL}/accounts/profile/${_profile}/`, {responseType: 'json'})
+      .get(`${environment.apiURL}/profiles`)
+      .pipe(
+        map((_item: any) => {
+          const item = _item[0];
+          return {
+            full_name: item.full_name,
+            avatar: item.avatar,
+            area_served: item.area_served,
+            company_name: item.company_name,
+            facebook_url: item.facebook_url,
+            linkedin_url: item.linkedin_url,
+            twitter_url: item.twitter_url,
+            website_url: item.website_url,
+            email: item.email
+          };
+        })
+      )
       .toPromise();
   }
 
   properties() {
-    const params: any = {
-      filter__listing_category_id: 2,
-      lat: 34.066888,
-      lon: -118.300592,
-      limit: 200,
-      min__list_price: 0,
-      page: 1,
-      sort: 'featured'
-    };
+
     return this.httpClient
-      .get(`${environment.apiURL}/listings/serp/search`, { params })
-      .toPromise();
+    .get(`${environment.apiURL}/properties`)
+    .pipe(
+      map((item: any) => item[0].hits.hits)
+    );
   }
 
   articles() {
-    const params: any = {
-      limit: 10,
-      'must__author.id': 7869,
-      page: 1,
-      sort: 'last_updated_date__desc'
 
-    };
     return this.httpClient
-      .get(`${environment.apiURL}/tips/serp/search`, { params })
+      .get(`${environment.apiURL}/articles`)
+      .pipe(
+        map((item: any) => item[0].hits.hits)
+      )
       .toPromise();
   }
 }

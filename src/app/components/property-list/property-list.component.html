@@ -1,66 +1,26 @@
-<div>
-  <article class="c-card">  
-      <header class="c-card__header">
-        <div class="c-card__image" style=" background-image: url('./../../../assets/images/paisaje.jpg');"  alt="Card Image" ></div>
-      </header>
-      <div class="c-card__body">
-        <h2 class="c-card__title">
-          Card
-        </h2>
-        <p class="c-card__subtitle">
-          initial component
-        </p>
-        
-        <p class="c-card__intro">
-           Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-        </p>
-        
+<div class="property-list-container">
+  <div *ngFor="let item of propertiesList$ | async" [ngStyle]="{'background-image':'url('+item._source.photos[0]+')'}" class="article">
+    <div class="article_InnerContainer">
+      <div class="article_price">${{item._source.list_price}}</div>
+      <div class="article_street">{{item._source.address.full_street_address}}</div>
+      <div class="article_location">{{item._source.address.city}}</div>
+      <div class="article_metadata_container">
+          <!-- <span class="article_metadata">
+              <img src="../../../assets/images/bed.svg" alt="">
+              2 Beds
+            </span> -->
+            <span class="article_metadata">
+                <img src="../../../assets/images/Bathroom.svg" alt="">
+              {{item._source.bathrooms}} baths
+            </span>
+            <span class="article_metadata">
+                <img src="../../../assets/images/squareft.svg" alt="">
+                {{item._source.living_area.area}} {{item._source.living_area.units}}
+            </span>
       </div>
-      <footer class="c-card__footer">
-        Footer
-      </footer>
-  </article>
-  <article class="c-card">  
-      <header class="c-card__header">
-        <div class="c-card__image" style=" background-image: url('./../../../assets/images/paisaje.jpg');"  alt="Card Image" ></div>
-      </header>
-      <div class="c-card__body">
-        <h2 class="c-card__title">
-          Card
-        </h2>
-        <p class="c-card__subtitle">
-          initial component
-        </p>
-        
-        <p class="c-card__intro">
-           Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-        </p>
-        
-      </div>
-      <footer class="c-card__footer">
-        Footer
-      </footer>
-  </article>
-  <article class="c-card">  
-      <header class="c-card__header">
-        <div class="c-card__image" style=" background-image: url('./../../../assets/images/paisaje.jpg');"  alt="Card Image" ></div>
-      </header>
-      <div class="c-card__body">
-        <h2 class="c-card__title">
-          Card
-        </h2>
-        <p class="c-card__subtitle">
-          initial component
-        </p>
-        
-        <p class="c-card__intro">
-           Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-        </p>
-        
-      </div>
-      <footer class="c-card__footer">
-        Footer
-      </footer>
-  </article>
-    
+    </div>
+    <span class="tag">
+      For sale
+    </span>
+  </div>
 </div>

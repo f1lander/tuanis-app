@@ -7,15 +7,19 @@ import { ApiService } from './../../services/api.service';
   styleUrls: ['./profile-header.component.css']
 })
 export class ProfileHeaderComponent implements OnInit {
-  profile: {};
+  profile: any = {};
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
-    this.apiService.profile().then(profile => {
-      this.profile = profile;
+    this.apiService
+      .profile()
+      .then(profile => {
+        this.profile = profile;
+      })
+      .catch(err => console.log(err));
+  }
 
-      console.log(this.profile);
-    })
-    .catch(err => console.log(err));
+  _profileButtonClicked(msg: string) {
+    console.log(msg);
   }
 }
